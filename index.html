@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Milanese Invasion — Como 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           ROOT — COMO: 65% RED  |  35% WHITE
+        ═══════════════════════════════════════════ */
+        :root {
+            /* Reds (dominant — 65%) */
+            --r-deep:    #5a0000;   /* darkest background */
+            --r-mid:     #8b1111;   /* main red           */
+            --r-bright:  #c01818;   /* accent red         */
+            --r-vivid:   #e02020;   /* highlights         */
+            --r-panel:   #7a0d0d;   /* section panels     */
+            --r-border:  #a01515;   /* borders            */
+
+            /* Whites (secondary — 35%) */
+            --w-pure:    #ffffff;   /* purest white        */
+            --w-warm:    #fff5ee;   /* warm white cards    */
+            --w-cream:   #fde8d8;   /* cream tint          */
+            --w-muted:   #e8c8b8;   /* muted white text    */
+            --w-dim:     #c8a090;   /* dimmer body text    */
+
+            /* Accents */
+            --gold:      #d4a030;
+            --gold-lt:   #f0c858;
+            --gold-dk:   #8a6010;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: var(--r-deep);
+            color: var(--w-warm);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Subtle noise grain on body */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        nav {
+            position: fixed; top:0; left:0; right:0; z-index:200;
+            background: linear-gradient(180deg, #3a0000 0%, #5a0808 100%);
+            border-bottom: 3px solid var(--r-bright);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 68px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.6);
+        }
+        /* white top stripe — heraldic banner */
+        nav::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; height:4px;
+            background: var(--w-pure);
+        }
+        /* gothic tooth pattern on bottom */
+        nav::after {
+            content: '';
+            position: absolute; bottom:-7px; left:0; right:0; height:7px;
+            background:
+                    repeating-linear-gradient(90deg,
+                    var(--r-bright) 0, var(--r-bright) 10px,
+                    transparent     10px, transparent 14px,
+                    var(--r-bright) 14px, var(--r-bright) 20px);
+            opacity: 0.55;
+        }
+
+        .nav-brand { display:flex; flex-direction:column; }
+        .nav-brand-main {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 1.4rem; color: var(--w-pure);
+            text-shadow: 0 0 16px rgba(255,100,100,0.4);
+            line-height: 1;
+        }
+        .nav-brand-sub {
+            font-family: 'Cinzel', serif; font-size: 0.42rem;
+            letter-spacing: 0.4em; color: var(--gold-dk);
+            text-transform: uppercase; margin-top: 2px;
+        }
+
+        nav ul { list-style:none; display:flex; align-items:center; gap:0; }
+        nav ul li { position:relative; }
+        nav ul li:not(:last-child)::after {
+            content: '✦'; position:absolute; right:0; top:50%; transform:translateY(-50%);
+            color: rgba(255,255,255,0.25); font-size:0.45rem;
+        }
+        nav ul li a {
+            font-family: 'Cinzel', serif; font-size: 0.68rem;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--w-muted); text-decoration: none;
+            padding: 0.5rem 1rem; display:block; position:relative;
+            transition: color 0.2s;
+        }
+        nav ul li a::after {
+            content: ''; position:absolute; bottom:6px; left:50%; right:50%;
+            height: 1px; background: var(--w-pure);
+            transition: left 0.25s, right 0.25s;
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--w-pure); }
+        nav ul li a:hover::after, nav ul li a.active::after { left:1rem; right:1rem; }
+
+        /* ═══════════════════════════════════════════
+           PAGES
+        ═══════════════════════════════════════════ */
+        .page { display:none; padding-top:68px; min-height:100vh; position:relative; z-index:1; }
+        .page.active { display:block; }
+
+        /* ═══════════════════════════════════════════
+           HERO — full red with white text
+        ═══════════════════════════════════════════ */
+        .hero {
+            position: relative; min-height: calc(100vh - 68px);
+            display: flex; flex-direction:column; align-items:center; justify-content:center;
+            text-align: center; padding: 4rem 2rem 3rem; overflow:hidden;
+            background: linear-gradient(160deg, var(--r-deep) 0%, var(--r-mid) 50%, var(--r-panel) 100%);
+        }
+        /* white diagonal stripe — heraldic division */
+        .hero::before {
+            content: '';
+            position: absolute; top:0; right:0; bottom:0;
+            width: 35%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        /* stone grid */
+        .hero::after {
+            content: '';
+            position: absolute; inset:0;
+            background-image:
+                    repeating-linear-gradient(0deg, transparent 0, transparent 59px, rgba(255,255,255,0.03) 59px, rgba(255,255,255,0.03) 60px),
+                    repeating-linear-gradient(90deg, transparent 0, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px);
+            pointer-events: none;
+        }
+        .hero-content { position:relative; z-index:2; max-width:760px; }
+
+        .hero-eyebrow {
+            font-family: 'Cinzel', serif; font-size: 0.68rem;
+            letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+            text-transform: uppercase; margin-bottom: 2rem;
+            animation: fadeDown 1s ease both;
+        }
+
+        /* white SVG ornament */
+        .hero-orn { margin-bottom:1.5rem; animation: fadeIn 1.2s ease both; }
+
+        .hero-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: var(--w-pure);
+            line-height: 1.0;
+            text-shadow: 0 0 40px rgba(255,255,255,0.15), 0 4px 16px rgba(0,0,0,0.8);
+            animation: fadeDown 1s 0.15s ease both;
+            margin-bottom: 0.4rem;
+        }
+        .hero-subtitle {
+            font-family: 'Cinzel', serif; font-size: clamp(0.75rem, 1.8vw, 1.05rem);
+            letter-spacing: 0.45em; color: rgba(255,255,255,0.75);
+            text-transform: uppercase; margin-bottom: 2.5rem;
+            animation: fadeDown 1s 0.3s ease both;
+        }
+        .hero-rule {
+            display:flex; align-items:center; justify-content:center;
+            gap: 1rem; margin: 0 auto 2.5rem; max-width: 480px;
+            animation: fadeIn 1s 0.45s ease both;
+        }
+        .hero-rule .ln { flex:1; height:1px; background: rgba(255,255,255,0.35); }
+        .hero-rule .cr { color: var(--w-pure); font-size:1rem; opacity:0.7; }
+
+        .hero-intro {
+            max-width: 640px; font-size: 1.15rem; line-height: 2;
+            color: var(--w-cream); font-style: italic;
+            animation: fadeDown 1s 0.55s ease both;
+            margin: 0 auto 3rem; text-align: justify;
+        }
+
+        /* heraldic shield SVG under intro */
+        .hero-shield { animation: fadeUp 1s 0.75s ease both; }
+
+        /* ═══════════════════════════════════════════
+           DAYS SECTION — white panels on red base
+        ═══════════════════════════════════════════ */
+        .days-section {
+            background: var(--r-mid);
+            padding: 5rem 2rem;
+            border-top: 3px solid var(--w-pure);
+            border-bottom: 3px solid var(--w-pure);
+            position: relative;
+        }
+        /* white stripe top accent */
+        .days-section::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; height:6px;
+            background: repeating-linear-gradient(90deg,
+            var(--w-pure) 0, var(--w-pure) 20px,
+            var(--r-bright) 20px, var(--r-bright) 30px);
+            opacity: 0.18;
+        }
+        .days-section-title {
+            font-family: 'Cinzel', serif; font-size: 0.6rem;
+            letter-spacing: 0.5em; text-transform: uppercase;
+            color: rgba(255,255,255,0.45); text-align:center;
+            margin-bottom: 3rem;
+            display:flex; align-items:center; justify-content:center; gap:1.5rem;
+        }
+        .days-section-title::before,
+        .days-section-title::after { content:'— ✦ —'; color:rgba(255,255,255,0.25); }
+
+        .days-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 2rem; max-width: 1050px; margin: 0 auto;
+        }
+
+        /* WHITE cards — the 35% white */
+        .day-card {
+            background: var(--w-warm);
+            border: 2px solid var(--w-pure);
+            color: var(--r-deep);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .day-card::before {
+            content: '';
+            position: absolute; inset: 5px;
+            border: 1px solid rgba(139,17,17,0.2);
+            pointer-events: none;
+        }
+        .day-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 0 2px var(--r-vivid);
+        }
+        /* Red header strip of each card */
+        .card-head {
+            background: var(--r-mid);
+            border-bottom: 2px solid var(--r-bright);
+            padding: 1.4rem 1.5rem 1rem;
+            text-align: center;
+        }
+        .card-roman {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 3rem; color: var(--w-pure);
+            text-shadow: 0 0 18px rgba(255,150,150,0.4);
+            display: block; line-height: 1; margin-bottom: 0.25rem;
+        }
+        .card-day-label {
+            font-family: 'Cinzel', serif; font-size: 0.58rem;
+            letter-spacing: 0.24em; text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+        }
+        .card-body { padding: 1.4rem 1.5rem 1.6rem; }
+        .card-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 0.95rem; color: var(--r-mid);
+            text-align: center; margin-bottom: 0.75rem;
+        }
+        .card-desc {
+            font-size: 0.9rem; line-height: 1.8;
+            color: #4a1010; text-align: justify; margin-bottom: 1.2rem;
+        }
+        .card-btn {
+            display: block; text-align: center;
+            font-family: 'Cinzel', serif; font-size: 0.58rem;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--w-warm); background: var(--r-mid);
+            border: 1px solid var(--r-bright);
+            padding: 0.5rem; cursor: pointer; transition: all 0.2s;
+        }
+        .card-btn:hover { background: var(--r-bright); }
+
+        /* ═══════════════════════════════════════════
+           FEATURES SECTION — red background
+        ═══════════════════════════════════════════ */
+        .features-section {
+            max-width: 980px; margin: 0 auto; padding: 5rem 2rem;
+        }
+        .blk-head { text-align:center; margin-bottom: 3rem; }
+        .blk-label {
+            font-family: 'Cinzel', serif; font-size: 0.58rem;
+            letter-spacing: 0.45em; color: rgba(255,255,255,0.4);
+            text-transform: uppercase; display:block; margin-bottom: 0.5rem;
+        }
+        .blk-gothic {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 2.2rem; color: var(--w-pure);
+            text-shadow: 0 0 20px rgba(255,255,255,0.15);
+        }
+
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(275px,1fr));
+            gap: 1.5rem;
+        }
+
+        /* WHITE feature cards */
+        .feat {
+            background: var(--w-warm);
+            border: 2px solid var(--w-pure);
+            padding: 1.75rem 1.5rem;
+            color: var(--r-deep);
+            position: relative;
+            transition: box-shadow 0.2s;
+        }
+        .feat::before {
+            content: '';
+            position: absolute; top:4px; right:4px;
+            width:14px; height:14px;
+            border-top: 2px solid var(--r-mid);
+            border-right: 2px solid var(--r-mid);
+        }
+        .feat::after {
+            content: '';
+            position: absolute; bottom:4px; left:4px;
+            width:14px; height:14px;
+            border-bottom: 2px solid var(--r-mid);
+            border-left: 2px solid var(--r-mid);
+        }
+        .feat:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 2px var(--r-bright); }
+        .feat-icon { font-size: 1.6rem; display:block; margin-bottom: 0.7rem; }
+        .feat-title {
+            font-family: 'Cinzel', serif; font-size: 0.77rem;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--r-mid); margin-bottom: 0.7rem;
+        }
+        .feat-desc { font-size: 0.9rem; line-height: 1.82; color: #3a1010; }
+
+        /* ═══════════════════════════════════════════
+           SECTION HEADER (sub-pages) — white banner
+        ═══════════════════════════════════════════ */
+        .sec-hero {
+            background: var(--w-warm);
+            border-bottom: 4px solid var(--r-bright);
+            padding: 4rem 2rem 3rem; text-align:center; position:relative;
+        }
+        .sec-hero::before {
+            content: '';
+            position: absolute; top:0; left:0; right:0; height:8px;
+            background: var(--r-mid);
+        }
+        /* red gothic tooth pattern under white header */
+        .sec-hero::after {
+            content: '';
+            position: absolute; bottom:-10px; left:0; right:0; height:10px;
+            background: repeating-linear-gradient(90deg,
+            var(--r-bright) 0, var(--r-bright) 12px,
+            transparent     12px, transparent 16px);
+            z-index: 2;
+        }
+        .sec-tag {
+            font-family: 'Cinzel', serif; font-size: 0.6rem;
+            letter-spacing: 0.45em; text-transform: uppercase;
+            color: var(--r-bright); margin-bottom: 0.75rem;
+        }
+        .sec-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            color: var(--r-deep);
+            text-shadow: 2px 2px 0 rgba(139,17,17,0.2);
+            margin-bottom: 0.5rem;
+        }
+        .sec-sub {
+            font-family: 'Cinzel', serif; font-size: 0.78rem;
+            letter-spacing: 0.3em; text-transform: uppercase; color: var(--r-panel);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTENT WRAP
+        ═══════════════════════════════════════════ */
+        .content-wrap { max-width:1100px; margin:0 auto; padding: 4rem 2rem 6rem; }
+
+        /* Alternating white + red content blocks */
+        .white-block {
+            background: var(--w-warm);
+            border: 2px solid var(--r-border);
+            padding: 2.5rem 2rem; margin-bottom: 2rem;
+            position: relative;
+            color: var(--r-deep);
+        }
+        .white-block::before {
+            content: '';
+            position: absolute; top:0; left:0; width:6px; bottom:0;
+            background: var(--r-mid);
+        }
+
+        /* chapter heading — on red background */
+        .ch { margin: 3rem 0 1.5rem; }
+        .ch-label {
+            font-family: 'Cinzel', serif; font-size: 0.54rem;
+            letter-spacing: 0.45em; text-transform: uppercase;
+            color: rgba(255,255,255,0.4); display:block; margin-bottom: 0.35rem;
+        }
+        .ch-title {
+            font-family: 'UnifrakturMaguntia', cursive; font-size: 1.85rem;
+            color: var(--w-pure); text-shadow: 0 0 16px rgba(255,255,255,0.12);
+            line-height: 1.1;
+        }
+        /* chapter heading — on white background */
+        .ch-dark .ch-label { color: rgba(90,0,0,0.5); }
+        .ch-dark .ch-title { color: var(--r-deep); text-shadow: none; }
+
+        /* ornamental rule on red */
+        hr.sep {
+            border:none; margin: 2.5rem 0; display:flex; align-items:center; gap:1rem;
+        }
+        hr.sep::before { content:''; flex:1; height:1px; background: rgba(255,255,255,0.2); }
+        hr.sep::after  { content:'⚔'; color:rgba(255,255,255,0.35); font-size:0.9rem; flex:none; }
+
+        /* ornamental rule on white */
+        hr.sep-dark { border:none; margin: 2rem 0; display:flex; align-items:center; gap:1rem; }
+        hr.sep-dark::before { content:''; flex:1; height:1px; background: rgba(139,17,17,0.25); }
+        hr.sep-dark::after  { content:'⚔'; color:rgba(139,17,17,0.4); font-size:0.85rem; flex:none; }
+
+        /* ═══════════════════════════════════════════
+           INTRO PARAGRAPH (italic, red bg)
+        ═══════════════════════════════════════════ */
+        .page-intro {
+            font-size: 1.1rem; line-height: 2; font-style:italic;
+            color: var(--w-cream); max-width: 700px;
+            margin-bottom: 3rem; text-align:justify;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCHEDULE TIMELINE — white cards on red bg
+        ═══════════════════════════════════════════ */
+        .schedule { position:relative; padding-left: 2.5rem; margin: 2rem 0; }
+        .schedule::before {
+            content:''; position:absolute; left:8px; top:0; bottom:0;
+            width: 3px; background: var(--w-pure); opacity: 0.4;
+        }
+        .sch-item { position:relative; margin-bottom: 1.75rem; }
+        .sch-item::before {
+            content:'◆'; position:absolute; left:-2.15rem; top:0.1rem;
+            color: var(--w-pure); font-size:0.75rem; opacity:0.7;
+        }
+        .sch-card {
+            background: var(--w-warm);
+            border-left: 4px solid var(--r-bright);
+            padding: 1rem 1.25rem;
+            color: var(--r-deep);
+        }
+        .sch-time {
+            font-family: 'Cinzel', serif; font-size: 0.6rem;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--r-bright); margin-bottom: 0.22rem;
+        }
+        .sch-event {
+            font-family: 'Cinzel Decorative', cursive; font-size: 0.9rem;
+            color: var(--r-deep); margin-bottom: 0.35rem;
+        }
+        .sch-desc { font-size: 0.9rem; line-height: 1.78; color: #3a1010; text-align:justify; }
+
+        /* ═══════════════════════════════════════════
+           PASSPORT — white card with red details
+        ═══════════════════════════════════════════ */
+        .passport-wrap { margin: 2rem 0; }
+        .passport {
+            display: inline-block; max-width: 310px;
+            background: var(--w-warm);
+            border: 3px solid var(--r-mid);
+            padding: 2rem; position: relative;
+            color: var(--r-deep);
+        }
+        .passport::before { content:'✦'; position:absolute; top:0.6rem; left:0.6rem; color:var(--r-border); font-size:0.8rem; }
+        .passport::after  { content:'✦'; position:absolute; bottom:0.6rem; right:0.6rem; color:var(--r-border); font-size:0.8rem; }
+        .pass-inner { border: 1px solid rgba(139,17,17,0.3); padding: 1.2rem; text-align:center; }
+        .pass-label { font-family:'Cinzel',serif; font-size:0.52rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--r-border); margin-bottom:0.7rem; display:block; }
+        .pass-title { font-family:'UnifrakturMaguntia',cursive; font-size:1.4rem; color:var(--r-deep); margin-bottom:0.35rem; }
+        .pass-date  { font-size:0.75rem; color:var(--r-panel); margin-bottom:0.9rem; }
+        .pass-stamp { display:inline-block; border:2px solid var(--r-vivid); color:var(--r-vivid); padding:0.3rem 0.9rem; font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; transform:rotate(-8deg); }
+
+        /* ═══════════════════════════════════════════
+           NOTE BOX — white card with red left border
+        ═══════════════════════════════════════════ */
+        .note {
+            background: var(--w-warm);
+            border-left: 5px solid var(--r-mid);
+            padding: 1.1rem 1.5rem;
+            color: #3a1010; font-size: 0.9rem; line-height: 1.82;
+            margin: 1.75rem 0;
+            position: relative;
+        }
+        .note strong { font-family:'Cinzel',serif; color:var(--r-mid); font-size:0.82rem; letter-spacing:0.05em; }
+
+        /* ═══════════════════════════════════════════
+           BADGES
+        ═══════════════════════════════════════════ */
+        .badge {
+            display:inline-block; font-family:'Cinzel',serif;
+            font-size:0.53rem; letter-spacing:0.12em; text-transform:uppercase;
+            padding: 0.14rem 0.55rem; border:1px solid;
+            margin-left: 0.38rem; vertical-align:middle;
+        }
+        .badge-free { border-color:#2a7a2a; color:#2a7a2a; }
+        .badge-paid { border-color:var(--r-mid); color:var(--r-mid); }
+
+        /* ═══════════════════════════════════════════
+           BUDGET — white tables on red bg
+        ═══════════════════════════════════════════ */
+        .finance-grid {
+            display: grid; grid-template-columns:1fr 1fr;
+            gap: 1.5rem; margin: 2.5rem 0;
+        }
+        .fin-stat {
+            background: var(--w-warm);
+            border: 2px solid var(--w-pure);
+            padding: 2rem 1rem; text-align:center;
+            position:relative; color:var(--r-deep);
+        }
+        .fin-stat::before { content:'◆'; position:absolute; top:-0.4rem; left:50%; transform:translateX(-50%); color:var(--r-mid); font-size:0.5rem; background:var(--w-warm); padding:0 0.3rem; }
+        .fin-num  { font-family:'UnifrakturMaguntia',cursive; font-size:2.1rem; color:var(--r-deep); display:block; margin-bottom:0.28rem; }
+        .fin-label{ font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--r-panel); }
+
+        .budget-wrap { overflow-x:auto; margin-bottom:2.5rem; }
+        table.bgt {
+            width:100%; border-collapse:collapse; font-size:0.88rem;
+            background: var(--w-warm); color: var(--r-deep);
+        }
+        table.bgt thead tr { background: var(--r-mid); }
+        table.bgt th {
+            font-family:'Cinzel',serif; font-size:0.6rem;
+            letter-spacing:0.18em; text-transform:uppercase;
+            color:var(--w-pure); padding:0.88rem 1.1rem; text-align:left;
+        }
+        table.bgt td { padding:0.68rem 1.1rem; border-bottom:1px solid rgba(139,17,17,0.12); line-height:1.5; }
+        table.bgt tr:hover td { background:rgba(139,17,17,0.04); }
+        table.bgt .cat {
+            font-family:'Cinzel',serif; font-size:0.65rem;
+            letter-spacing:0.1em; text-transform:uppercase;
+            color:var(--r-bright); background:rgba(139,17,17,0.06);
+        }
+        table.bgt .amt { font-family:'Cinzel',serif; color:var(--r-mid); white-space:nowrap; font-weight:600; }
+        table.bgt .total-row td { border-top:2px solid var(--r-mid); border-bottom:none; font-family:'Cinzel',serif; color:var(--r-deep); font-size:1rem; padding-top:1rem; }
+
+        .surplus-box {
+            background: var(--w-warm);
+            border: 3px solid var(--r-mid);
+            padding: 2.5rem; text-align:center;
+            color: var(--r-deep); position:relative;
+        }
+        .surplus-box::before { content:'✦'; position:absolute; top:0.6rem; left:0.6rem; color:var(--r-border); }
+        .surplus-box::after  { content:'✦'; position:absolute; bottom:0.6rem; right:0.6rem; color:var(--r-border); }
+        .surplus-num { font-family:'UnifrakturMaguntia',cursive; font-size:3rem; color:var(--r-mid); text-shadow:2px 2px 0 rgba(139,17,17,0.2); }
+
+        /* ═══════════════════════════════════════════
+           FOOTER — white bar at bottom
+        ═══════════════════════════════════════════ */
+        footer {
+            background: var(--w-warm);
+            border-top: 4px solid var(--r-mid);
+            padding: 2.5rem 2rem; text-align:center;
+            color: var(--r-deep); position:relative;
+        }
+        footer::before {
+            content:'';
+            position:absolute; top:0; left:0; right:0; height:4px;
+            background: repeating-linear-gradient(90deg,
+            var(--r-mid) 0, var(--r-mid) 18px,
+            var(--w-pure) 18px, var(--w-pure) 22px);
+            opacity:0.4;
+        }
+        .foot-latin {
+            font-family:'Cinzel',serif; font-size:0.52rem;
+            letter-spacing:0.4em; text-transform:uppercase;
+            color:var(--r-border); display:block; margin-bottom:0.6rem;
+        }
+        .foot-txt {
+            font-family:'Cinzel',serif; font-size:0.6rem;
+            letter-spacing:0.2em; text-transform:uppercase; color:var(--r-panel);
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL TOP
+        ═══════════════════════════════════════════ */
+        .scroll-top {
+            position:fixed; bottom:2rem; right:2rem;
+            background:var(--r-mid); border:2px solid var(--w-pure);
+            color:var(--w-pure); width:44px; height:44px;
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; font-size:1rem; z-index:90;
+            transition:all 0.2s; opacity:0;
+            font-family:'Cinzel',serif;
+        }
+        .scroll-top.visible { opacity:1; }
+        .scroll-top:hover { background:var(--w-warm); color:var(--r-mid); }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+        ═══════════════════════════════════════════ */
+        @keyframes fadeDown { from{opacity:0;transform:translateY(-18px);} to{opacity:1;transform:translateY(0);} }
+        @keyframes fadeUp   { from{opacity:0;transform:translateY(18px);}  to{opacity:1;transform:translateY(0);} }
+        @keyframes fadeIn   { from{opacity:0;} to{opacity:1;} }
+        @keyframes flicker  {
+            0%  { text-shadow:0 0 8px rgba(255,160,0,.9),0 0 22px rgba(255,80,0,.5); }
+            50% { text-shadow:0 0 16px rgba(255,200,0,1),0 0 38px rgba(255,110,0,.6); }
+            100%{ text-shadow:0 0 10px rgba(255,130,0,.8),0 0 28px rgba(255,60,0,.45); }
+        }
+        .torch { animation: flicker 1.8s infinite alternate; }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media(max-width:768px){
+            nav{padding:0 1rem;}
+            .nav-brand-main{font-size:1.05rem;}
+            nav ul li a{font-size:.56rem;padding:.4rem .55rem;letter-spacing:.07em;}
+            nav ul li:not(:last-child)::after{display:none;}
+            .days-grid{grid-template-columns:1fr;}
+            .finance-grid{grid-template-columns:1fr;}
+            .hero-title{font-size:2.8rem;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══ -->
+<nav>
+    <div class="nav-brand">
+        <span class="nav-brand-main">The Milanese Invasion</span>
+        <span class="nav-brand-sub">Como Historical Festival · AD 2026</span>
+    </div>
+    <ul>
+        <li><a href="#" class="active" onclick="showPage('home',this)">Home</a></li>
+        <li><a href="#" onclick="showPage('day1',this)">Day I</a></li>
+        <li><a href="#" onclick="showPage('day2',this)">Day II</a></li>
+        <li><a href="#" onclick="showPage('day3',this)">Day III</a></li>
+        <li><a href="#" onclick="showPage('budget',this)">Budget</a></li>
+    </ul>
+</nav>
+
+<!-- ══════════════════════ HOME ══════════════════════ -->
+<div id="page-home" class="page active">
+
+    <!-- HERO — all red -->
+    <div class="hero">
+        <div class="hero-content">
+
+            <div class="hero-orn">
+                <svg width="340" height="38" viewBox="0 0 340 38" xmlns="http://www.w3.org/2000/svg" opacity="0.55">
+                    <line x1="0" y1="19" x2="136" y2="19" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="204" y1="19" x2="340" y2="19" stroke="#ffffff" stroke-width="1.2"/>
+                    <polygon points="170,4 185,15 180,32 160,32 155,15" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+                    <text x="170" y="24" text-anchor="middle" font-size="11" fill="white">✦</text>
+                    <path d="M136,19 C143,11 150,9 157,19 C150,29 143,27 136,19Z" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                    <path d="M204,19 C197,11 190,9 183,19 C190,29 197,27 204,19Z" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+                    <circle cx="108" cy="19" r="2.5" fill="rgba(255,255,255,0.4)"/>
+                    <circle cx="232" cy="19" r="2.5" fill="rgba(255,255,255,0.4)"/>
+                </svg>
+            </div>
+
+            <p class="hero-eyebrow">✦ Anno Domini 2026 · Como · Three Days ✦</p>
+            <h1 class="hero-title">The Milanese<br>Invasion</h1>
+            <p class="hero-subtitle">The Historical Festival of Como</p>
+
+            <div class="hero-rule">
+                <div class="ln"></div>
+                <span class="cr">⚔</span>
+                <div class="ln"></div>
+            </div>
+
+            <p class="hero-intro">
+                In the year 1127, Milan's army came to Como and left only ruins. Nine hundred years later, the Milanese come back — but this time they bring food, music, and fire. Three days of living history inside and around the old city walls, where the past is not read but lived, tasted, and celebrated together.
+            </p>
+
+            <!-- heraldic shield SVG -->
+            <div class="hero-shield">
+                <svg width="90" height="100" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg" opacity="0.45">
+                    <path d="M8,8 L82,8 L82,58 Q82,82 45,95 Q8,82 8,58 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                    <line x1="45" y1="8" x2="45" y2="95" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" stroke-dasharray="4,3"/>
+                    <line x1="8" y1="38" x2="82" y2="38" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" stroke-dasharray="4,3"/>
+                    <text x="45" y="30" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.6)">✦</text>
+                    <text x="26" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.4)" font-family="serif">C</text>
+                    <text x="64" y="62" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.4)" font-family="serif">M</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- THREE DAYS — red bg, white cards -->
+    <div class="days-section">
+        <p class="days-section-title">The Three Acts of the Festival</p>
+        <div class="days-grid">
+
+            <div class="day-card" onclick="showPage('day1',null)">
+                <div class="card-head">
+                    <span class="card-roman">I</span>
+                    <span class="card-day-label">Day One · Friday</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">The Drama</div>
+                    <p class="card-desc">The invasion begins. Every visitor gets a medieval passport. The city walls come alive with AR history, fire shows, and the curfew of 1127 re-acted after dark.</p>
+                    <button class="card-btn" onclick="event.stopPropagation();showPage('day1',null)">✦ Open the Day ✦</button>
+                </div>
+            </div>
+
+            <div class="day-card" onclick="showPage('day2',null)">
+                <div class="card-head">
+                    <span class="card-roman">II</span>
+                    <span class="card-day-label">Day Two · Saturday</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">The Contest</div>
+                    <p class="card-desc">Milan is inside the walls — but the war becomes competition. Cooking duels, archery contests, craft markets, sports challenges, and history workshops fill every street.</p>
+                    <button class="card-btn" onclick="event.stopPropagation();showPage('day2',null)">✦ Open the Day ✦</button>
+                </div>
+            </div>
+
+            <div class="day-card" onclick="showPage('day3',null)">
+                <div class="card-head">
+                    <span class="card-roman">III</span>
+                    <span class="card-day-label">Day Three · Sunday</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">The Fusion</div>
+                    <p class="card-desc">The walls become one long dinner table. A big shared meal runs along the old city centre. Video mapping turns the ancient stones into a screen of light. The night ends in fireworks.</p>
+                    <button class="card-btn" onclick="event.stopPropagation();showPage('day3',null)">✦ Open the Day ✦</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- KEY FEATURES — red bg, white cards -->
+    <div class="features-section">
+        <div class="blk-head">
+            <svg width="250" height="28" viewBox="0 0 250 28" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto .75rem;" opacity="0.45">
+                <line x1="0" y1="14" x2="92" y2="14" stroke="white" stroke-width="0.9"/>
+                <line x1="158" y1="14" x2="250" y2="14" stroke="white" stroke-width="0.9"/>
+                <path d="M92,14 Q104,4 116,14 Q125,24 134,14 Q146,4 158,14" fill="none" stroke="white" stroke-width="1.1"/>
+                <circle cx="125" cy="14" r="2.8" fill="white" opacity="0.6"/>
+            </svg>
+            <span class="blk-label">What makes this festival special</span>
+            <div class="blk-gothic">Key Features</div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feat">
+                <span class="feat-icon">🎫</span>
+                <div class="feat-title">Medieval Passport System</div>
+                <p class="feat-desc">Every visitor gets a paper passport at the entrance. If you enter from Porta Torre you are stamped as an <em>Invader</em> from Milan. If you are already inside you become a <em>Defender</em> of Como. No tasks — just atmosphere and identity.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">📱</span>
+                <div class="feat-title">Augmented Reality Walls</div>
+                <p class="feat-desc">QR codes are placed along the old stone walls. Scan them with your phone to see a short AR video of the 1127 siege. Walls fall, soldiers charge — right where you are standing. History becomes real.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🎧</span>
+                <div class="feat-title">Silent Disco Audio Guides</div>
+                <p class="feat-desc">Instead of boring information boards, you wear wireless headphones. As you walk the walls you hear the sounds of the siege: shouting, battering rams, war drums. The audio changes as you move.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🪙</span>
+                <div class="feat-title">The Sesterzio — Festival Coin</div>
+                <p class="feat-desc">At the entrance you exchange real euros for <em>Sesterzi Comaschi</em>, a special festival coin. You use it at all food stalls and workshops. Any coins you do not spend can be refunded at the exit or kept as a souvenir.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🏹</span>
+                <div class="feat-title">Como vs. Milan Challenges</div>
+                <p class="feat-desc">Real competitions across three days — archery, cooking duels, football, and craft skill tests. Local teams from Como compete against visiting Milanese challengers. The rivalry grows with every round.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🕯️</span>
+                <div class="feat-title">The Curfew Show</div>
+                <p class="feat-desc">Every night at a set time, all city lights go off. Only torches stay lit. Performers act out the fall of Porta Torre with fire juggling, sword fights, and a dramatic walk along the walls. No screens — just fire.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span class="foot-latin">✦ In Nomine Civitatis Comensis ✦</span>
+        <span class="foot-txt">The Milanese Invasion · Como · Anno Domini 2026 · Historical Festival</span>
+    </footer>
+</div>
+
+<!-- ══════════════════════ DAY 1 ══════════════════════ -->
+<div id="page-day1" class="page">
+
+    <!-- white section header -->
+    <div class="sec-hero">
+        <p class="sec-tag">✦ Day One · Friday · AD 2026 ✦</p>
+        <h1 class="sec-title">The Drama</h1>
+        <p class="sec-sub">The Invasion Begins</p>
+        <svg width="200" height="18" viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;" opacity="0.4">
+            <line x1="0" y1="9" x2="78" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <line x1="122" y1="9" x2="200" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <text x="100" y="13" text-anchor="middle" font-size="11" fill="#8b1111">⚔</text>
+        </svg>
+    </div>
+
+    <div class="content-wrap">
+        <p class="page-intro">
+            The first day sets everything up. Visitors are sorted, passports are stamped, and the walls start to tell their story. When night comes, the city goes back to 1127 — with fire, theatre, and the old curfew darkness.
+        </p>
+
+        <!-- entry system — white block -->
+        <div class="ch"><span class="ch-label">Entry System</span><div class="ch-title">The Medieval Passport</div></div>
+
+        <div class="features-grid" style="margin-bottom:2rem;">
+            <div class="feat">
+                <span class="feat-icon">🚪</span>
+                <div class="feat-title">Porta Torre — The Invaders' Gate</div>
+                <p class="feat-desc">Visitors who enter from the Milan side get the <em>Invader</em> stamp. Ticket price: <strong style="color:var(--r-mid)">€5 per person</strong>. Children under 12 and Como residents: <strong style="color:var(--r-mid)">free.</strong></p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🏰</span>
+                <div class="feat-title">The Defenders' Entry</div>
+                <p class="feat-desc">People already inside the old centre, or who enter by other gates, are stamped as <em>Defenders</em> of Como. Same ticket price. The difference is only for the mood — there is no game advantage.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🪙</span>
+                <div class="feat-title">Sesterzio Exchange</div>
+                <p class="feat-desc">At the entrance, visitors exchange euros for <em>Sesterzi Comaschi</em>. These coins are used at all festival stalls. Leftover coins can be refunded at the exit or kept as a souvenir.</p>
+            </div>
+        </div>
+
+        <div class="passport-wrap">
+            <div class="passport">
+                <div class="pass-inner">
+                    <span class="pass-label">Medieval Passport · Liber Civium</span>
+                    <div class="pass-title">The Milanese Invasion</div>
+                    <div class="pass-date">Como · Anno Domini 2026</div>
+                    <div class="pass-stamp">Invader ✦ Porta Torre</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">Day Programme</span><div class="ch-title">Hour by Hour</div></div>
+
+        <div class="schedule">
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">09:00 — 10:00</div>
+                    <div class="sch-event">Setup & Staff Arrival</div>
+                    <div class="sch-desc">Volunteers and staff take their places. Entry booths, passport tables, and sesterzio exchange points are set up at Porta Torre and the other entrances.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">10:00</div>
+                    <div class="sch-event">Gates Open <span class="badge badge-paid">€5</span> <span class="badge badge-free">Free Under 12 / Residents</span></div>
+                    <div class="sch-desc">Official opening. First visitors get their passports. The AR wall experience is live. Silent Disco headphones are given out at the main entrance.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">10:00 — 14:00</div>
+                    <div class="sch-event">Morning: Walls & AR Experience</div>
+                    <div class="sch-desc">Visitors explore the wall circuit with their audio guides. QR codes show AR siege scenes on their phones. Live actors in old clothes stand at key points along the route.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">11:00 — 13:00</div>
+                    <div class="sch-event">Food Village Opens</div>
+                    <div class="sch-desc">The festival food stalls open. Traditional Como street food, hot drinks, and local products. Everything is paid in Sesterzi.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">15:00 — 18:00</div>
+                    <div class="sch-event">Afternoon: History Walks & Living Actors</div>
+                    <div class="sch-desc">Guided walks leave from Piazza Duomo every 45 minutes. Re-enactors tell personal stories of the 1127 siege from both sides — Como citizens and Milanese soldiers.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">18:00 — 20:30</div>
+                    <div class="sch-event">Evening Food & Craft Stalls</div>
+                    <div class="sch-desc">All food stalls at full speed. Aperitivo hour with local wine and food producers. Street music starts in the smaller squares.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">21:00</div>
+                    <div class="sch-event"><span class="torch">🔥</span> The Curfew — Fire Show at Porta Torre</div>
+                    <div class="sch-desc">All city lights go off. Only torches remain on the walls. Performers act out the fall of Porta Torre: fire juggling, sword fights, and a dramatic walk along the walls. Lasts about 45 minutes. This is the emotional heart of Day One.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">22:00</div>
+                    <div class="sch-event">Day One Closes</div>
+                    <div class="sch-desc">Food stalls close. Sesterzio exchange booths reopen for refunds. Stewards guide visitors safely to all exits.</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">Special Feature</span><div class="ch-title">The Festival Map</div></div>
+        <div class="white-block">
+            <p style="font-size:.92rem;line-height:1.85;color:#3a1010;text-align:justify;">
+                Every visitor gets a paper map with their passport. The map shows all food and craft stalls with sesterzio prices, all QR code spots along the walls, audio guide zones, toilets, first aid points, emergency exits, and the stage for the evening fire show.
+            </p>
+            <hr class="sep-dark">
+            <p style="font-size:.88rem;line-height:1.82;color:#4a1010;text-align:justify;">
+                <span style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--r-mid);letter-spacing:.05em;">Logistics Note —</span> The map comes in two versions: a simple black-and-white folded leaflet for mass distribution (~2,000 copies per day) and a larger illustrated poster version sold as a souvenir for €2.
+            </p>
+        </div>
+    </div>
+    <footer>
+        <span class="foot-latin">✦ Prima Dies · Il Dramma ✦</span>
+        <span class="foot-txt">The Milanese Invasion · Day One: The Drama</span>
+    </footer>
+</div>
+
+<!-- ══════════════════════ DAY 2 ══════════════════════ -->
+<div id="page-day2" class="page">
+
+    <div class="sec-hero">
+        <p class="sec-tag">✦ Day Two · Saturday · AD 2026 ✦</p>
+        <h1 class="sec-title">The Contest</h1>
+        <p class="sec-sub">War Becomes Excellence</p>
+        <svg width="200" height="18" viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;" opacity="0.4">
+            <line x1="0" y1="9" x2="78" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <line x1="122" y1="9" x2="200" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <text x="100" y="13" text-anchor="middle" font-size="11" fill="#8b1111">⚔</text>
+        </svg>
+    </div>
+
+    <div class="content-wrap">
+        <p class="page-intro">
+            The Milanese are inside the walls — but instead of swords they bring pots, recipes, and sporting energy. Saturday is the festival at full speed: every street has a stall, every square has a challenge, and every hour has a duel.
+        </p>
+
+        <!-- THE MARKET -->
+        <div class="ch"><span class="ch-label">The Market</span><div class="ch-title">Streets of Stalls</div></div>
+        <div class="features-grid" style="margin-bottom:2rem;">
+            <div class="feat">
+                <span class="feat-icon">🏪</span>
+                <div class="feat-title">Commercial Stalls <span class="badge badge-paid">Fee Required</span></div>
+                <p class="feat-desc">Private sellers, craftspeople, and food makers pay a stall fee (€150–250 per day) to set up along the main streets. Categories: food, crafts, clothing, and local products. The number of stalls per type is limited to avoid too much repetition.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🏛️</span>
+                <div class="feat-title">Organiser Reserved Areas</div>
+                <p class="feat-desc">Some spots are kept by the organisation for cooking challenge arenas, woodworking workshops, historical craft demos, and sponsor activities. These are all free to enter and watch.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🪵</span>
+                <div class="feat-title">Woodworking & Craft Labs</div>
+                <p class="feat-desc">Workshops where visitors try medieval and Renaissance techniques: wood carving, silk weaving (a tribute to Como's famous textile history), and basic blacksmith demonstrations. Free to join, run by local craftspeople.</p>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">The Duels</span><div class="ch-title">Cooking Challenges · Como vs. Milan</div></div>
+
+        <div class="schedule">
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">Morning</div>
+                    <div class="sch-event">🥐 Panettone (Milan) vs. Biascia (Como)</div>
+                    <div class="sch-desc">Teams from each city make their traditional sweet bread. A jury of 5 local food experts judges taste, tradition, and presentation. Tasting tickets are available. The public vote counts for 30% of the final score.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">Midday</div>
+                    <div class="sch-event">🍚 Risotto with Lake Fish (Como) vs. Ossobuco Milanese</div>
+                    <div class="sch-desc">The main cooking duel. Professional chefs cook at the same time on open-air stages. Live commentary by a food critic. Small tasting portions are sold to the public in sesterzi.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">Evening</div>
+                    <div class="sch-event">🍷 Secret Evening Challenge</div>
+                    <div class="sch-desc">The third challenge is only announced on the morning of Day Two. The likely format is a dessert or aperitivo duel, using ingredients from both areas. The surprise builds excitement.</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">The Tournaments</span><div class="ch-title">Sports Challenges</div></div>
+
+        <div class="features-grid" style="margin-bottom:2rem;">
+            <div class="feat">
+                <span class="feat-icon">⚽</span>
+                <div class="feat-title">Football Tournament</div>
+                <p class="feat-desc">5-a-side tournament in the afternoon. Open to youth and adult teams from Como and Milan. Sign up in advance on the festival website. Small entry fee per team (€20). Prize: trophy and festival vouchers.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🏹</span>
+                <div class="feat-title">Archery Contest</div>
+                <p class="feat-desc">A traditional archery range near the walls. Open all day with free lessons. Afternoon competition for registered players. Medieval recurve bows are provided. Themed as the defence of Como in 1127.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🎯</span>
+                <div class="feat-title">Mini-Challenge Games</div>
+                <p class="feat-desc">Relay races, tug of war, medieval ring toss, and sack races for children all through the day. Free, no booking needed. Volunteer helpers in period costume run the games.</p>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">Culture & Community</span><div class="ch-title">For Everyone</div></div>
+
+        <div class="features-grid" style="margin-bottom:2rem;">
+            <div class="feat">
+                <span class="feat-icon">🎭</span>
+                <div class="feat-title">Traditional Como Theatre</div>
+                <p class="feat-desc">Shows about Como's history through the centuries — dialect theatre, folk music, and storytelling. Easy to follow, made for families and older visitors. Two sessions: 15:00 and 17:30.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">🕯️</span>
+                <div class="feat-title">The Curfew — Night 2</div>
+                <p class="feat-desc">The torch curfew happens again at 21:00. This time the show is different — it is about the silence after the fall: a candlelit walk and a reading of historical accounts from both sides.</p>
+            </div>
+            <div class="feat">
+                <span class="feat-icon">💡</span>
+                <div class="feat-title">Evening: DJ Set & Projections</div>
+                <p class="feat-desc">From 22:00, a DJ plays in the main square. Projectors cast historical images and animations on the buildings and walls around the square. Stalls stay open. This is the biggest evening of the festival.</p>
+            </div>
+        </div>
+
+        <div class="white-block">
+            <p style="font-size:.9rem;line-height:1.85;color:#3a1010;text-align:justify;">
+                <span style="font-family:'Cinzel',serif;font-size:.8rem;color:var(--r-mid);">Estimated Attendance Day 2 —</span> Saturday is expected to be the busiest day: between 3,000 and 4,500 visitors. All challenge arenas need crowd-management stewards. Food stall capacity should be tested before the event.
+            </p>
+        </div>
+    </div>
+    <footer>
+        <span class="foot-latin">✦ Secunda Dies · La Tenzone ✦</span>
+        <span class="foot-txt">The Milanese Invasion · Day Two: The Contest</span>
+    </footer>
+</div>
+
+<!-- ══════════════════════ DAY 3 ══════════════════════ -->
+<div id="page-day3" class="page">
+
+    <div class="sec-hero">
+        <p class="sec-tag">✦ Day Three · Sunday · AD 2026 ✦</p>
+        <h1 class="sec-title">The Fusion</h1>
+        <p class="sec-sub">Peace, Fire & One Table</p>
+        <svg width="200" height="18" viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;" opacity="0.4">
+            <line x1="0" y1="9" x2="78" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <line x1="122" y1="9" x2="200" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <text x="100" y="13" text-anchor="middle" font-size="11" fill="#8b1111">⚔</text>
+        </svg>
+    </div>
+
+    <div class="content-wrap">
+        <p class="page-intro">
+            The invasion is over. The contest has finished. What is left is a simple truth: Como and Milan were never really separated — two cities of the same world, connected by the lake, by silk, and by nine centuries of shared history. Sunday is the day of celebration, good food, and great light.
+        </p>
+
+        <div class="schedule">
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">10:00</div>
+                    <div class="sch-event">Gates Open — Final Day</div>
+                    <div class="sch-desc">All stalls reopen. The mood is warmer and more relaxed. Visitors who came all three days show their full passports — a shared identity has formed naturally over the weekend.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">11:00 — 13:00</div>
+                    <div class="sch-event">Volta Science Workshop <span class="badge badge-free">Free</span></div>
+                    <div class="sch-desc">A demonstration of how to build a simple voltaic pile — Alessandro Volta's invention. Volta was born in Como, and his work changed the world. Sessions of 20 people, held 6 times during the morning.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">11:30 — 13:00</div>
+                    <div class="sch-event">Silk Weaving Workshop <span class="badge badge-free">Free</span></div>
+                    <div class="sch-desc">Como has been famous for silk since the 1400s. Visitors try hand-weaving on a simple loom. Local craftspeople show old techniques from the time of the Visconti family. Educational but hands-on.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">13:00 — 15:30</div>
+                    <div class="sch-event">🍽️ La Tavolata Insubre — The Great Shared Meal</div>
+                    <div class="sch-desc">One long table running about 300–500 metres through the pedestrian centre. Thousands of visitors eat together and share typical products from Como and Milan: cheese, cured meats, bread, lake fish, and risotto. Food stalls serve at festival prices. The town and sponsors pay for a free starter tasting for everyone seated. A local musician plays acoustic music during the meal.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">16:00 — 18:30</div>
+                    <div class="sch-event">Last Market Hours & Award Ceremony</div>
+                    <div class="sch-desc">Final hours for all stalls. The results of the cooking challenges and sports events are announced in a short ceremony in the main square. Trophies, certificates, and applause from the crowd. The mayor or another public figure gives a closing speech.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">19:00 — 21:00</div>
+                    <div class="sch-event">🎥 Video Mapping: "One Engine"</div>
+                    <div class="sch-desc">The old walls of Como become a projection screen more than 200 metres wide. A 20-minute video mapping show plays every 45 minutes from sunset. The story: Como and Milan as one shared engine of culture — fashion, design, tourism, and new ideas. Modern images are layered over the medieval stone. Free to watch from the walls.</div>
+                </div>
+            </div>
+            <div class="sch-item">
+                <div class="sch-card">
+                    <div class="sch-time">21:30</div>
+                    <div class="sch-event">🎆 Grand Finale — Fireworks Show</div>
+                    <div class="sch-desc">The festival closes with a 12–15 minute fireworks show over the lake and the city walls. Synchronised to music that mixes medieval themes with modern orchestration. The last image: one firework in the shape of the Insubria region — Como and Milan as one.</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">The Heart of Day Three</span><div class="ch-title">La Tavolata Insubre</div></div>
+
+        <div class="white-block">
+            <p style="font-size:.92rem;line-height:1.85;color:#3a1010;text-align:justify;margin-bottom:1.25rem;">
+                The Tavolata is the emotional heart of the whole festival. A shared table 300–500 metres long runs through the pedestrian historic centre, set with linen, candles, and shared plates. Similar events have worked very well in other Italian cities (Tavola di San Giuseppe, Slow Food events) and are fully doable with good planning.
+            </p>
+            <hr class="sep-dark">
+            <div class="features-grid">
+                <div style="padding:.5rem 0;">
+                    <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--r-mid);margin-bottom:.5rem;">📐 Logistics</div>
+                    <p style="font-size:.9rem;line-height:1.8;color:#3a1010;">About 500 metres of tables, with seats for 800–1,200 people at a time. The municipality must approve street closures. Tables are rented from event companies. Volunteers manage setup and clearing.</p>
+                </div>
+                <div style="padding:.5rem 0;">
+                    <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--r-mid);margin-bottom:.5rem;">🧀 Food Model</div>
+                    <p style="font-size:.9rem;line-height:1.8;color:#3a1010;">Visitors buy food tickets in sesterzi in advance or at the entrance. Food stations are every 50 metres along the table. Local producers sell at cost for visibility. Sponsors fund a free starter for all seated guests.</p>
+                </div>
+                <div style="padding:.5rem 0;">
+                    <div style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--r-mid);margin-bottom:.5rem;">📸 Visual Impact</div>
+                    <p style="font-size:.9rem;line-height:1.8;color:#3a1010;">Drone footage of the meal becomes the festival's main media content. One aerial shot of the full table — with the old walls behind and the lake in the distance — explains the whole festival concept in one single image.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note" style="margin-top:2rem;">
+            <strong>Day 3 Tone —</strong> This day is deliberately slower and more personal than Day 2. The goal is not the biggest crowd but the strongest memory. Families, older visitors, and people who came for all three days should feel that this is the reward they came for.
+        </div>
+    </div>
+    <footer>
+        <span class="foot-latin">✦ Tertia Dies · La Fusione ✦</span>
+        <span class="foot-txt">The Milanese Invasion · Day Three: The Fusion</span>
+    </footer>
+</div>
+
+<!-- ══════════════════════ BUDGET ══════════════════════ -->
+<div id="page-budget" class="page">
+
+    <div class="sec-hero">
+        <p class="sec-tag">✦ Financial Planning · AD 2026 ✦</p>
+        <h1 class="sec-title">The Budget</h1>
+        <p class="sec-sub">Costs, Revenue & Projections</p>
+        <svg width="200" height="18" viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;" opacity="0.4">
+            <line x1="0" y1="9" x2="78" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <line x1="122" y1="9" x2="200" y2="9" stroke="#8b1111" stroke-width="1.2"/>
+            <text x="100" y="13" text-anchor="middle" font-size="11" fill="#8b1111">⚔</text>
+        </svg>
+    </div>
+
+    <div class="content-wrap">
+        <p class="page-intro">
+            This is a realistic budget based on Italian local festivals of a similar size — 3 days, historic city centre, 6,000–10,000 total visitors. All numbers are estimates. Items marked with an asterisk (*) can be partly funded by sponsors or the municipality.
+        </p>
+
+        <!-- summary stats — white cards -->
+        <div class="finance-grid">
+            <div class="fin-stat"><span class="fin-num">~€47,000</span><span class="fin-label">Estimated Total Costs</span></div>
+            <div class="fin-stat"><span class="fin-num">~€52,000</span><span class="fin-label">Estimated Total Revenue</span></div>
+            <div class="fin-stat"><span class="fin-num">~€5,000</span><span class="fin-label">Projected Surplus</span></div>
+            <div class="fin-stat"><span class="fin-num">6,000–10,000</span><span class="fin-label">Expected Total Visitors (3 days)</span></div>
+        </div>
+
+        <div class="ch"><span class="ch-label">Spending Breakdown</span><div class="ch-title">Cost Register</div></div>
+        <div class="budget-wrap">
+            <table class="bgt">
+                <thead><tr><th>Category</th><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                <tbody>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🏗️ Infrastructure & Logistics</td></tr>
+                <tr><td></td><td>Stage rental (main + secondary)</td><td>per day</td><td>3</td><td class="amt">€3,000</td><td>2 stages, 3 days. Includes lighting rig.</td></tr>
+                <tr><td></td><td>Tables & chairs (Tavolata + stalls)</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>800 seats for the Tavolata + general use</td></tr>
+                <tr><td></td><td>Tents / gazebos for food area</td><td>unit</td><td>20</td><td class="amt">€1,800</td><td>€90/tent/day × 3 days / 20 units avg.</td></tr>
+                <tr><td></td><td>Portable toilets</td><td>unit × 3 days</td><td>12</td><td class="amt">€1,200</td><td>€100/unit/day, minimum 12 units</td></tr>
+                <tr><td></td><td>Barriers & crowd control fencing</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Entry gates, challenge arenas</td></tr>
+                <tr><td></td><td>Generator / power supply</td><td>per day</td><td>3</td><td class="amt">€900</td><td>€300/day backup + stage power</td></tr>
+                <tr><td></td><td>Waste management & cleaning</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>€400/day contract with a local company</td></tr>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎬 Production & Technology *</td></tr>
+                <tr><td></td><td>AR / QR system development & setup</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>One-time cost. AR content + QR codes along the walls.</td></tr>
+                <tr><td></td><td>Silent Disco headphone rental</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>200 headsets × 3 days, includes transmitters</td></tr>
+                <tr><td></td><td>Video mapping production (Day 3)</td><td>flat</td><td>1</td><td class="amt">€4,500</td><td>Local AV company, 200m projection surface</td></tr>
+                <tr><td></td><td>Sound system (PA + monitors)</td><td>per day</td><td>3</td><td class="amt">€2,400</td><td>€800/day professional sound hire</td></tr>
+                <tr><td></td><td>Lighting for evening / curfew show</td><td>per night</td><td>3</td><td class="amt">€1,500</td><td>Torch rigs + safety spotlights</td></tr>
+                <tr><td></td><td>Drone for aerial filming</td><td>per day</td><td>2</td><td class="amt">€600</td><td>Day 2 and Day 3 (Tavolata)</td></tr>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎭 Performers & Staff</td></tr>
+                <tr><td></td><td>Fire performers / re-enactors</td><td>per night</td><td>3</td><td class="amt">€3,000</td><td>~8 performers × €125/night × 3 nights</td></tr>
+                <tr><td></td><td>Historical actors (wall circuit)</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>6 actors × €100/day × 3 days</td></tr>
+                <tr><td></td><td>DJ (Day 2 & 3 evening)</td><td>per set</td><td>2</td><td class="amt">€800</td><td>€400/set local DJ</td></tr>
+                <tr><td></td><td>Live musician (Tavolata acoustic)</td><td>per session</td><td>1</td><td class="amt">€250</td><td>Local musician, 2-hour set</td></tr>
+                <tr><td></td><td>Stewards / security staff</td><td>per day</td><td>3</td><td class="amt">€3,600</td><td>8 stewards × €150/day × 3 days</td></tr>
+                <tr><td></td><td>Volunteer coordination</td><td>flat</td><td>1</td><td class="amt">€600</td><td>~30 volunteers, travel refund + meals</td></tr>
+                <tr><td></td><td>First aid team</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>2 paramedics × €200/day × 3 days</td></tr>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">📦 Printed Materials & Merchandise</td></tr>
+                <tr><td></td><td>Medieval passports (printed)</td><td>units</td><td>8,000</td><td class="amt">€1,200</td><td>€0.15/unit, 8,000 printed</td></tr>
+                <tr><td></td><td>Entry wristbands</td><td>units</td><td>10,000</td><td class="amt">€400</td><td>Tyvek wristbands</td></tr>
+                <tr><td></td><td>Sesterzio coin tokens</td><td>units</td><td>30,000</td><td class="amt">€900</td><td>Cardboard token coins, €0.03/unit</td></tr>
+                <tr><td></td><td>Festival maps (B&W leaflet)</td><td>units</td><td>7,000</td><td class="amt">€700</td><td>€0.10/unit folded A3</td></tr>
+                <tr><td></td><td>Posters, banners, and signs</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Street banners, event signage</td></tr>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎆 Grand Finale *</td></tr>
+                <tr><td></td><td>Fireworks show (Day 3 finale)</td><td>flat</td><td>1</td><td class="amt">€5,500</td><td>12–15 min professional show, lakeside. Part-funded by the municipality.</td></tr>
+                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">📋 Permits, Insurance & Admin</td></tr>
+                <tr><td></td><td>Municipal permits & SIAE music licences</td><td>flat</td><td>1</td><td class="amt">€1,500</td><td>Street closure, public event, music licence</td></tr>
+                <tr><td></td><td>Public liability insurance</td><td>flat</td><td>1</td><td class="amt">€900</td><td>3-day event cover, up to 10,000 people</td></tr>
+                <tr><td></td><td>Contingency fund (10%)</td><td>flat</td><td>1</td><td class="amt">€4,200</td><td>Bad weather, last-minute changes, emergencies</td></tr>
+                <tr class="total-row"><td colspan="4"><strong>TOTAL ESTIMATED COSTS</strong></td><td class="amt"><strong>≈ €47,150</strong></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="sep">
+        <div class="ch"><span class="ch-label">Income Sources</span><div class="ch-title">Revenue Register</div></div>
+        <div class="budget-wrap">
+            <table class="bgt">
+                <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
+                <tbody>
+                <tr><td>Entry tickets (Days 1–3)</td><td>~4,500 paying visitors × €5 avg.</td><td class="amt">€22,500</td><td>~60% of visitors pay. Under-12 and residents are free. Conservative estimate.</td></tr>
+                <tr><td>Commercial stall fees</td><td>40 stalls × €200 avg. × 2 days</td><td class="amt">€8,000</td><td>Day 2 & 3 main market. Fewer stalls on Day 1.</td></tr>
+                <tr><td>Sesterzio exchange margin</td><td>5% float on unredeemed coins</td><td class="amt">€500</td><td>Conservative. Assumes ~€10,000 in sesterzio circulation.</td></tr>
+                <tr><td>Illustrated map / souvenir sales</td><td>500 units × €2</td><td class="amt">€1,000</td><td>Illustrated poster map sold at information stalls.</td></tr>
+                <tr><td>Sports tournament fees</td><td>20 football teams × €20</td><td class="amt">€400</td><td>5-a-side tournament, Day 2.</td></tr>
+                <tr><td>Municipal co-funding (Comune di Como)</td><td>Confirmed partner contribution</td><td class="amt">€8,000</td><td>In exchange for branding. Partly covers fireworks and permits.</td></tr>
+                <tr><td>Private sponsorships</td><td>3–5 local / regional sponsors</td><td class="amt">€8,000</td><td>Fashion brands, local banks, food companies. Logo on passport and map, stage banner.</td></tr>
+                <tr><td>Media & streaming rights</td><td>Local TV / online broadcast deal</td><td class="amt">€1,500</td><td>Optional. Negotiated with local TV channels or a streaming partner.</td></tr>
+                <tr><td>Food & drink commission</td><td>8% of food stall sesterzio revenue</td><td class="amt">€2,000</td><td>Commission on all organiser-area food stalls.</td></tr>
+                <tr class="total-row"><td colspan="2"><strong>TOTAL ESTIMATED REVENUE</strong></td><td class="amt"><strong>≈ €51,900</strong></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="sep">
+
+        <!-- surplus — white card -->
+        <div class="surplus-box">
+            <p style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--r-panel);margin-bottom:0.5rem;">Projected Balance</p>
+            <div class="surplus-num">+ €4,750 surplus</div>
+            <p style="font-size:0.9rem;color:#3a1010;margin-top:0.9rem;line-height:1.85;max-width:600px;margin-left:auto;margin-right:auto;text-align:justify;">Based on the careful scenario: 60% paying visitor rate, 40 stalls, 4 sponsors. A 10% contingency fund is already included in the cost total. The surplus can fund a second edition of the festival or be donated to a local heritage conservation fund.</p>
+        </div>
+
+        <!-- risk notes — white cards -->
+        <div class="note" style="margin-top:2.5rem;">
+            <strong>Key Risks —</strong> (1) Bad weather: rain on Day 2 could cut attendance by 40%. A covered backup stage is a good idea. (2) Fireworks need approval from the Prefettura at least 60 days before the event. (3) The AR system is a one-time expense — for future editions the cost is almost zero. (4) The sesterzio exchange needs a clear refund policy to avoid complaints.
+        </div>
+        <div class="note">
+            <strong>Municipal Partnership —</strong> The municipality's involvement is essential — not just for money, but because street closure permits, police coordination, and access to the historic walls all need official approval. Present this festival as a cultural tourism project to access the municipality's promotional channels and funding.
+        </div>
+        <div class="note">
+            <strong>Sponsor Package Levels —</strong> Gold (€3,000+): naming rights for one arena, logo on passport and map, stage banner. Silver (€1,500): logo on map and signs, mention in announcements. Bronze (€500): logo on programme and website. In-kind: product donation in exchange for stall visibility.
+        </div>
+    </div>
+    <footer>
+        <span class="foot-latin">✦ Registrum Pecuniae · Financial Record ✦</span>
+        <span class="foot-txt">The Milanese Invasion · Financial Planning Document · 2026</span>
+    </footer>
+</div>
+
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+    function showPage(id, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-' + id).classList.add('active');
+        document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+        if (el) { el.classList.add('active'); }
+        else {
+            const m = { home:0, day1:1, day2:2, day3:3, budget:4 };
+            document.querySelectorAll('nav ul li a')[m[id]]?.classList.add('active');
+        }
+        window.scrollTo({ top:0, behavior:'smooth' });
+    }
+    window.addEventListener('scroll', () => {
+        document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
+    });
+</script>
+</body>
+</html>
