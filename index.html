@@ -20,10 +20,10 @@
 
             /* Whites (secondary — 35%) */
             --w-pure:    #ffffff;   /* purest white        */
-            --w-warm:    #fff5ee;   /* warm white cards    */
-            --w-cream:   #fde8d8;   /* cream tint          */
-            --w-muted:   #e8c8b8;   /* muted white text    */
-            --w-dim:     #c8a090;   /* dimmer body text    */
+            --w-warm:    #fff8f2;   /* warm white cards    */
+            --w-cream:   #ffe8d8;   /* cream tint          */
+            --w-muted:   #f0d0c0;   /* muted white text    */
+            --w-dim:     #ddb8a0;   /* dimmer body text    */
 
             /* Accents */
             --gold:      #d4a030;
@@ -86,8 +86,8 @@
             line-height: 1;
         }
         .nav-brand-sub {
-            font-family: 'Cinzel', serif; font-size: 0.42rem;
-            letter-spacing: 0.4em; color: var(--gold-dk);
+            font-family: 'Cinzel', serif; font-size: 0.5rem;
+            letter-spacing: 0.35em; color: var(--gold);
             text-transform: uppercase; margin-top: 2px;
         }
 
@@ -98,9 +98,9 @@
             color: rgba(255,255,255,0.25); font-size:0.45rem;
         }
         nav ul li a {
-            font-family: 'Cinzel', serif; font-size: 0.82rem;
+            font-family: 'Cinzel', serif; font-size: 0.88rem;
             letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--w-muted); text-decoration: none;
+            color: var(--w-cream); text-decoration: none;
             padding: 0.5rem 1rem; display:block; position:relative;
             transition: color 0.2s;
         }
@@ -147,8 +147,8 @@
         .hero-content { position:relative; z-index:2; max-width:760px; }
 
         .hero-eyebrow {
-            font-family: 'Cinzel', serif; font-size: 0.68rem;
-            letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+            font-family: 'Cinzel', serif; font-size: 0.75rem;
+            letter-spacing: 0.5em; color: rgba(255,255,255,0.75);
             text-transform: uppercase; margin-bottom: 2rem;
             animation: fadeDown 1s ease both;
         }
@@ -166,8 +166,8 @@
             margin-bottom: 0.4rem;
         }
         .hero-subtitle {
-            font-family: 'Cinzel', serif; font-size: clamp(0.75rem, 1.8vw, 1.05rem);
-            letter-spacing: 0.45em; color: rgba(255,255,255,0.75);
+            font-family: 'Cinzel', serif; font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+            letter-spacing: 0.45em; color: rgba(255,255,255,0.9);
             text-transform: uppercase; margin-bottom: 2.5rem;
             animation: fadeDown 1s 0.3s ease both;
         }
@@ -180,8 +180,8 @@
         .hero-rule .cr { color: var(--w-pure); font-size:1rem; opacity:0.7; }
 
         .hero-intro {
-            max-width: 640px; font-size: 1.15rem; line-height: 2;
-            color: var(--w-cream); font-style: italic;
+            max-width: 640px; font-size: 1.2rem; line-height: 2;
+            color: var(--w-pure); font-style: italic;
             animation: fadeDown 1s 0.55s ease both;
             margin: 0 auto 3rem; text-align: justify;
         }
@@ -209,14 +209,14 @@
             opacity: 0.18;
         }
         .days-section-title {
-            font-family: 'Cinzel', serif; font-size: 0.6rem;
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
             letter-spacing: 0.5em; text-transform: uppercase;
-            color: rgba(255,255,255,0.45); text-align:center;
+            color: rgba(255,255,255,0.75); text-align:center;
             margin-bottom: 3rem;
             display:flex; align-items:center; justify-content:center; gap:1.5rem;
         }
         .days-section-title::before,
-        .days-section-title::after { content:'— ✦ —'; color:rgba(255,255,255,0.25); }
+        .days-section-title::after { content:'— ✦ —'; color:rgba(255,255,255,0.45); }
 
         .days-grid {
             display: grid; grid-template-columns: repeat(3, 1fr);
@@ -256,9 +256,9 @@
             display: block; line-height: 1; margin-bottom: 0.25rem;
         }
         .card-day-label {
-            font-family: 'Cinzel', serif; font-size: 0.58rem;
+            font-family: 'Cinzel', serif; font-size: 0.65rem;
             letter-spacing: 0.24em; text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.8);
         }
         .card-body { padding: 1.4rem 1.5rem 1.6rem; }
         .card-title {
@@ -267,8 +267,8 @@
             text-align: center; margin-bottom: 0.75rem;
         }
         .card-desc {
-            font-size: 0.9rem; line-height: 1.8;
-            color: #4a1010; text-align: justify; margin-bottom: 1.2rem;
+            font-size: 0.95rem; line-height: 1.8;
+            color: #2a0808; text-align: justify; margin-bottom: 1.2rem;
         }
         .card-btn {
             display: block; text-align: center;
@@ -288,8 +288,8 @@
         }
         .blk-head { text-align:center; margin-bottom: 3rem; }
         .blk-label {
-            font-family: 'Cinzel', serif; font-size: 0.58rem;
-            letter-spacing: 0.45em; color: rgba(255,255,255,0.4);
+            font-family: 'Cinzel', serif; font-size: 0.65rem;
+            letter-spacing: 0.45em; color: rgba(255,255,255,0.7);
             text-transform: uppercase; display:block; margin-bottom: 0.5rem;
         }
         .blk-gothic {
@@ -333,7 +333,7 @@
             letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--r-mid); margin-bottom: 0.7rem;
         }
-        .feat-desc { font-size: 1.05rem; line-height: 1.82; color: #3a1010; }
+        .feat-desc { font-size: 1.05rem; line-height: 1.82; color: #1a0808; }
 
         /* ═══════════════════════════════════════════
            SECTION HEADER (sub-pages) — white banner
@@ -358,9 +358,9 @@
             z-index: 2;
         }
         .sec-tag {
-            font-family: 'Cinzel', serif; font-size: 0.6rem;
+            font-family: 'Cinzel', serif; font-size: 0.7rem;
             letter-spacing: 0.45em; text-transform: uppercase;
-            color: var(--r-bright); margin-bottom: 0.75rem;
+            color: var(--r-vivid); margin-bottom: 0.75rem;
         }
         .sec-title {
             font-family: 'UnifrakturMaguntia', cursive;
@@ -397,9 +397,9 @@
         /* chapter heading — on red background */
         .ch { margin: 3rem 0 1.5rem; }
         .ch-label {
-            font-family: 'Cinzel', serif; font-size: 0.68rem;
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
             letter-spacing: 0.45em; text-transform: uppercase;
-            color: rgba(255,255,255,0.4); display:block; margin-bottom: 0.35rem;
+            color: rgba(255,255,255,0.7); display:block; margin-bottom: 0.35rem;
         }
         .ch-title {
             font-family: 'UnifrakturMaguntia', cursive; font-size: 2.3rem;
@@ -427,7 +427,7 @@
         ═══════════════════════════════════════════ */
         .page-intro {
             font-size: 1.3rem; line-height: 2; font-style:italic;
-            color: var(--w-cream); max-width: 700px;
+            color: var(--w-pure); max-width: 700px;
             margin-bottom: 3rem; text-align:justify;
         }
 
@@ -467,16 +467,16 @@
             line-height: 1;
         }
         .sch-time {
-            font-family: 'Cinzel', serif; font-size: 0.58rem;
+            font-family: 'Cinzel', serif; font-size: 0.62rem;
             letter-spacing: 0.18em; text-transform: uppercase;
-            color: #7abde8; margin-bottom: 0.1rem;
+            color: #a0d4f0; margin-bottom: 0.1rem;
         }
         .sch-event {
-            font-family: 'Cinzel Decorative', cursive; font-size: 0.92rem;
-            color: #e8f4ff; line-height: 1.35;
+            font-family: 'Cinzel Decorative', cursive; font-size: 0.95rem;
+            color: #f0f8ff; line-height: 1.35;
         }
         .sch-desc {
-            font-size: 0.9rem; line-height: 1.6; color: #a8c8e8;
+            font-size: 0.92rem; line-height: 1.65; color: #c8e0f5;
             margin-top: 0.25rem;
         }
 
@@ -506,7 +506,7 @@
             background: var(--w-warm);
             border-left: 5px solid var(--r-mid);
             padding: 1.1rem 1.5rem;
-            color: #3a1010; font-size: 1.05rem; line-height: 1.82;
+            color: #1a0808; font-size: 1.05rem; line-height: 1.82;
             margin: 1.75rem 0;
             position: relative;
         }
@@ -539,25 +539,25 @@
         }
         .fin-stat::before { content:'◆'; position:absolute; top:-0.4rem; left:50%; transform:translateX(-50%); color:var(--r-mid); font-size:0.5rem; background:var(--w-warm); padding:0 0.3rem; }
         .fin-num  { font-family:'UnifrakturMaguntia',cursive; font-size:2.6rem; color:var(--r-deep); display:block; margin-bottom:0.28rem; }
-        .fin-label{ font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--r-panel); }
+        .fin-label{ font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--r-mid); }
 
         .budget-wrap { overflow-x:auto; margin-bottom:2.5rem; }
         table.bgt {
-            width:100%; border-collapse:collapse; font-size:0.88rem;
+            width:100%; border-collapse:collapse; font-size:0.92rem;
             background: var(--w-warm); color: var(--r-deep);
         }
         table.bgt thead tr { background: var(--r-mid); }
         table.bgt th {
-            font-family:'Cinzel',serif; font-size:0.78rem;
+            font-family:'Cinzel',serif; font-size:0.82rem;
             letter-spacing:0.18em; text-transform:uppercase;
             color:var(--w-pure); padding:0.88rem 1.1rem; text-align:left;
         }
-        table.bgt td { padding:0.75rem 1.1rem; font-size:0.95rem; border-bottom:1px solid rgba(139,17,17,0.12); line-height:1.5; }
+        table.bgt td { padding:0.75rem 1.1rem; font-size:0.97rem; border-bottom:1px solid rgba(139,17,17,0.12); line-height:1.5; }
         table.bgt tr:hover td { background:rgba(139,17,17,0.04); }
         table.bgt .cat {
-            font-family:'Cinzel',serif; font-size:0.65rem;
+            font-family:'Cinzel',serif; font-size:0.72rem;
             letter-spacing:0.1em; text-transform:uppercase;
-            color:var(--r-bright); background:rgba(139,17,17,0.06);
+            color:var(--r-deep); background:rgba(139,17,17,0.09); font-weight:600;
         }
         table.bgt .amt { font-family:'Cinzel',serif; color:var(--r-mid); white-space:nowrap; font-weight:600; }
         table.bgt .total-row td { border-top:2px solid var(--r-mid); border-bottom:none; font-family:'Cinzel',serif; color:var(--r-deep); font-size:1rem; padding-top:1rem; }
@@ -1189,86 +1189,360 @@
 
         <!-- summary stats — white cards -->
         <div class="finance-grid">
-            <div class="fin-stat"><span class="fin-num">~€49,650</span><span class="fin-label">Estimated Total Costs</span></div>
-            <div class="fin-stat"><span class="fin-num">~€52,000</span><span class="fin-label">Estimated Total Revenue</span></div>
-            <div class="fin-stat"><span class="fin-num">~€2,250</span><span class="fin-label">Projected Surplus</span></div>
+            <div class="fin-stat"><span class="fin-num">€49,650</span><span class="fin-label">Estimated Total Costs</span></div>
+            <div class="fin-stat"><span class="fin-num">€52,000</span><span class="fin-label">Estimated Total Revenue</span></div>
+            <div class="fin-stat"><span class="fin-num">+€2,250</span><span class="fin-label">Projected Surplus</span></div>
             <div class="fin-stat"><span class="fin-num">6,000–10,000</span><span class="fin-label">Expected Total Visitors (3 days)</span></div>
         </div>
 
         <div class="ch"><span class="ch-label">Spending Breakdown</span><div class="ch-title">Cost Register</div></div>
-        <div class="budget-wrap">
-            <table class="bgt">
-                <thead><tr><th>Category</th><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
-                <tbody>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🏗️ Infrastructure & Logistics</td></tr>
-                <tr><td></td><td>Stage rental (main + secondary)</td><td>per day</td><td>3</td><td class="amt">€3,000</td><td>2 stages, 3 days. Includes lighting rig.</td></tr>
-                <tr><td></td><td>Tables & chairs (Tavolata + stalls)</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>800 seats for the Tavolata + general use</td></tr>
-                <tr><td></td><td>Tents / gazebos for food area</td><td>unit</td><td>20</td><td class="amt">€1,800</td><td>€90/tent/day × 3 days / 20 units avg.</td></tr>
-                <tr><td></td><td>Portable toilets</td><td>unit × 3 days</td><td>12</td><td class="amt">€1,200</td><td>€100/unit/day, minimum 12 units</td></tr>
-                <tr><td></td><td>Barriers & crowd control fencing</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Entry gates, challenge arenas</td></tr>
-                <tr><td></td><td>Generator / power supply</td><td>per day</td><td>3</td><td class="amt">€900</td><td>€300/day backup + stage power</td></tr>
-                <tr><td></td><td>Waste management & cleaning</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>€400/day contract with a local company</td></tr>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎬 Production & Technology *</td></tr>
-                <tr><td></td><td>AR / QR system development & setup</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>One-time cost. AR content + QR codes along the walls.</td></tr>
-                <tr><td></td><td>Silent Disco headphone rental</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>200 headsets × 3 days, includes transmitters</td></tr>
-                <tr><td></td><td>Video mapping production (Day 3)</td><td>flat</td><td>1</td><td class="amt">€4,500</td><td>Local AV company, 200m projection surface</td></tr>
-                <tr><td></td><td>Sound system (PA + monitors)</td><td>per day</td><td>3</td><td class="amt">€2,400</td><td>€800/day professional sound hire</td></tr>
-                <tr><td></td><td>Lighting for evening / curfew show</td><td>per night</td><td>3</td><td class="amt">€1,500</td><td>Torch rigs + safety spotlights</td></tr>
-                <tr><td></td><td>Drone for aerial filming</td><td>per day</td><td>2</td><td class="amt">€600</td><td>Day 2 and Day 3 (Tavolata)</td></tr>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎭 Performers & Staff</td></tr>
-                <tr><td></td><td>Fire performers / re-enactors</td><td>per night</td><td>3</td><td class="amt">€3,000</td><td>~8 performers × €125/night × 3 nights</td></tr>
-                <tr><td></td><td>Historical actors (wall circuit)</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>6 actors × €100/day × 3 days</td></tr>
-                <tr><td></td><td>DJ (Day 2 & 3 evening)</td><td>per set</td><td>2</td><td class="amt">€800</td><td>€400/set local DJ</td></tr>
-                <tr><td></td><td>Live musician (Tavolata acoustic)</td><td>per session</td><td>1</td><td class="amt">€250</td><td>Local musician, 2-hour set</td></tr>
-                <tr><td></td><td>Stewards / security staff</td><td>per day</td><td>3</td><td class="amt">€3,600</td><td>8 stewards × €150/day × 3 days</td></tr>
-                <tr><td></td><td>Volunteer coordination</td><td>flat</td><td>1</td><td class="amt">€600</td><td>~30 volunteers, travel refund + meals</td></tr>
-                <tr><td></td><td>First aid team</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>2 paramedics × €200/day × 3 days</td></tr>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">📦 Printed Materials & Merchandise</td></tr>
-                <tr><td></td><td>Medieval passports (printed)</td><td>units</td><td>8,000</td><td class="amt">€1,200</td><td>€0.15/unit, 8,000 printed</td></tr>
-                <tr><td></td><td>Entry wristbands</td><td>units</td><td>10,000</td><td class="amt">€400</td><td>Tyvek wristbands</td></tr>
-                <tr><td></td><td>Sesterzio coin tokens</td><td>units</td><td>30,000</td><td class="amt">€900</td><td>Cardboard token coins, €0.03/unit</td></tr>
-                <tr><td></td><td>Festival maps (B&W leaflet)</td><td>units</td><td>7,000</td><td class="amt">€700</td><td>€0.10/unit folded A3</td></tr>
-                <tr><td></td><td>Posters, banners, and signs</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Street banners, event signage</td></tr>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">🎆 Grand Finale *</td></tr>
-                <tr><td></td><td>Fireworks show (Day 3 finale)</td><td>flat</td><td>1</td><td class="amt">€5,500</td><td>12–15 min professional show, lakeside. Part-funded by the municipality.</td></tr>
-                <tr><td colspan="6" class="cat" style="padding-top:1.1rem;">📋 Permits, Insurance & Admin</td></tr>
-                <tr><td></td><td>Municipal permits & SIAE music licences</td><td>flat</td><td>1</td><td class="amt">€1,500</td><td>Street closure, public event, music licence</td></tr>
-                <tr><td></td><td>Public liability insurance</td><td>flat</td><td>1</td><td class="amt">€900</td><td>3-day event cover, up to 10,000 people</td></tr>
-                <tr><td>Advertising & Promotion</td><td>Social media ads (Meta / Instagram / TikTok)</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Geo-targeted, Como & Milan area</td></tr>
-                <tr><td></td><td>Local press & radio spots (La Provincia, RadioComo)</td><td>flat</td><td>1</td><td class="amt">€600</td><td>Annunci stampa + spot radio</td></tr>
-                <tr><td></td><td>Graphic design (visual identity, flyers, digital assets)</td><td>flat</td><td>1</td><td class="amt">€700</td><td>Freelance designer</td></tr>
-                <tr><td></td><td>Influencer / local content creator partnership</td><td>flat</td><td>2–3</td><td class="amt">€400</td><td>Micro-influencer storia + lago + medioevo niche</td></tr>
-                <tr><td></td><td>Contingency fund (10%)</td><td>flat</td><td>1</td><td class="amt">€4,200</td><td>Bad weather, last-minute changes, emergencies</td></tr>
-                <tr class="total-row"><td colspan="4"><strong>TOTAL ESTIMATED COSTS</strong></td><td class="amt"><strong>≈ €49,650</strong></td><td></td></tr>
-                </tbody>
-            </table>
+
+        <style>
+        /* Dark accordion — matches the crimson widget style */
+        .acc-section {
+            background: rgba(0,0,0,0.18);
+            border: 1px solid rgba(200,160,80,0.18);
+            border-radius: 3px;
+            margin-bottom: 0.55rem;
+            overflow: hidden;
+        }
+        .acc-header {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:1rem 1.4rem; cursor:pointer; user-select:none;
+            transition:background 0.15s; gap:1rem;
+        }
+        .acc-header:hover { background:rgba(200,160,80,0.07); }
+        .acc-header.open { border-bottom: 1px solid rgba(200,160,80,0.15); }
+        .acc-left { display:flex; align-items:center; gap:0.65rem; }
+        .acc-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); opacity:0.65; flex-shrink:0; }
+        .acc-cat {
+            font-family:'Cinzel',serif; font-size:0.68rem;
+            letter-spacing:0.2em; text-transform:uppercase;
+            color: rgba(253,232,216,0.88);
+        }
+        .acc-right { display:flex; align-items:center; gap:1.25rem; }
+        .acc-total {
+            font-family:'EB Garamond',serif; font-size:1.1rem;
+            color: var(--gold-lt);
+        }
+        .acc-chevron {
+            width:14px; height:14px; color:rgba(253,232,216,0.45);
+            transition:transform 0.2s; flex-shrink:0;
+        }
+        .acc-chevron.open { transform:rotate(180deg); }
+        .acc-body { display:none; overflow-x:auto; }
+        .acc-body.open { display:block; }
+
+        /* Dark table inside accordion */
+        table.bgt-dark {
+            width:100%; border-collapse:collapse; font-size:0.85rem;
+            background: transparent;
+        }
+        table.bgt-dark thead tr { border-bottom: 1px solid rgba(200,160,80,0.15); }
+        table.bgt-dark th {
+            font-family:'Cinzel',serif; font-size:0.6rem;
+            letter-spacing:0.18em; text-transform:uppercase;
+            color:rgba(253,232,216,0.4); padding:0.55rem 1.4rem; text-align:left;
+        }
+        table.bgt-dark th:nth-child(2), table.bgt-dark th:nth-child(3) { text-align:center; }
+        table.bgt-dark th:nth-child(4) { text-align:right; }
+        table.bgt-dark tbody tr { border-bottom:1px solid rgba(200,160,80,0.07); }
+        table.bgt-dark tbody tr:last-child { border-bottom:none; }
+        table.bgt-dark td {
+            padding:0.6rem 1.4rem; color:rgba(253,232,216,0.82);
+            vertical-align:top; line-height:1.5;
+        }
+        table.bgt-dark td:nth-child(2), table.bgt-dark td:nth-child(3) {
+            text-align:center; color:rgba(253,232,216,0.45);
+        }
+        table.bgt-dark td:nth-child(4) {
+            text-align:right; font-family:'EB Garamond',serif;
+            font-size:1rem; color:var(--w-cream); white-space:nowrap;
+        }
+        table.bgt-dark .note-td { color:rgba(253,232,216,0.4) !important; font-size:0.78rem; }
+
+        /* Revenue table (3 cols) */
+        table.bgt-dark.rev td:nth-child(2) { text-align:left; color:rgba(253,232,216,0.55); }
+        table.bgt-dark.rev td:nth-child(3) {
+            text-align:right; font-family:'EB Garamond',serif;
+            font-size:1rem; color:var(--w-cream); white-space:nowrap;
+        }
+        table.bgt-dark.rev td:nth-child(4) { text-align:left; color:rgba(253,232,216,0.4); font-size:0.78rem; }
+
+        .acc-total-bar {
+            background: rgba(90,10,12,0.6);
+            border: 1px solid rgba(200,160,80,0.25);
+            border-radius: 3px;
+            padding:0.9rem 1.4rem;
+            display:flex; align-items:center; justify-content:space-between;
+            margin-top: 0.4rem; margin-bottom: 2rem;
+        }
+        .acc-total-bar-label {
+            font-family:'Cinzel',serif; font-size:0.68rem;
+            letter-spacing:0.2em; text-transform:uppercase;
+            color:rgba(253,232,216,0.7);
+        }
+        .acc-total-bar-val {
+            font-family:'UnifrakturMaguntia',cursive; font-size:1.6rem;
+            color:var(--gold-lt);
+        }
+        </style>
+
+        <!-- 🏗️ Infrastructure & Logistics -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🏗️ Infrastructure & Logistics</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€11,400</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Stage rental (main + secondary)</td><td>per day</td><td>3</td><td class="amt">€3,000</td><td>2 stages, 3 days. Includes lighting rig.</td></tr>
+                    <tr><td>Tables & chairs (Tavolata + stalls)</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>800 seats for the Tavolata + general use</td></tr>
+                    <tr><td>Tents / gazebos for food area</td><td>unit</td><td>20</td><td class="amt">€1,800</td><td>€90/tent/day × 3 days / 20 units avg.</td></tr>
+                    <tr><td>Portable toilets</td><td>unit × 3 days</td><td>12</td><td class="amt">€1,200</td><td>€100/unit/day, minimum 12 units</td></tr>
+                    <tr><td>Barriers & crowd control fencing</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Entry gates, challenge arenas</td></tr>
+                    <tr><td>Generator / power supply</td><td>per day</td><td>3</td><td class="amt">€900</td><td>€300/day backup + stage power</td></tr>
+                    <tr><td>Waste management & cleaning</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>€400/day contract with a local company</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 🎬 Production & Technology -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🎬 Production & Technology *</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€13,300</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>AR / QR system development & setup</td><td>flat</td><td>1</td><td class="amt">€2,500</td><td>One-time cost. AR content + QR codes along the walls.</td></tr>
+                    <tr><td>Silent Disco headphone rental</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>200 headsets × 3 days, includes transmitters</td></tr>
+                    <tr><td>Video mapping production (Day 3)</td><td>flat</td><td>1</td><td class="amt">€4,500</td><td>Local AV company, 200m projection surface</td></tr>
+                    <tr><td>Sound system (PA + monitors)</td><td>per day</td><td>3</td><td class="amt">€2,400</td><td>€800/day professional sound hire</td></tr>
+                    <tr><td>Lighting for evening / curfew show</td><td>per night</td><td>3</td><td class="amt">€1,500</td><td>Torch rigs + safety spotlights</td></tr>
+                    <tr><td>Drone for aerial filming</td><td>per day</td><td>2</td><td class="amt">€600</td><td>Day 2 and Day 3 (Tavolata)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 🎭 Performers & Staff -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🎭 Performers & Staff</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€11,250</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Fire performers / re-enactors</td><td>per night</td><td>3</td><td class="amt">€3,000</td><td>~8 performers × €125/night × 3 nights</td></tr>
+                    <tr><td>Historical actors (wall circuit)</td><td>per day</td><td>3</td><td class="amt">€1,800</td><td>6 actors × €100/day × 3 days</td></tr>
+                    <tr><td>DJ (Day 2 & 3 evening)</td><td>per set</td><td>2</td><td class="amt">€800</td><td>€400/set local DJ</td></tr>
+                    <tr><td>Live musician (Tavolata acoustic)</td><td>per session</td><td>1</td><td class="amt">€250</td><td>Local musician, 2-hour set</td></tr>
+                    <tr><td>Stewards / security staff</td><td>per day</td><td>3</td><td class="amt">€3,600</td><td>8 stewards × €150/day × 3 days</td></tr>
+                    <tr><td>Volunteer coordination</td><td>flat</td><td>1</td><td class="amt">€600</td><td>~30 volunteers, travel refund + meals</td></tr>
+                    <tr><td>First aid team</td><td>per day</td><td>3</td><td class="amt">€1,200</td><td>2 paramedics × €200/day × 3 days</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 📦 Printed Materials -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">📦 Printed Materials & Merchandise</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€4,000</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Medieval passports (printed)</td><td>units</td><td>8,000</td><td class="amt">€1,200</td><td>€0.15/unit, 8,000 printed</td></tr>
+                    <tr><td>Entry wristbands</td><td>units</td><td>10,000</td><td class="amt">€400</td><td>Tyvek wristbands</td></tr>
+                    <tr><td>Sesterzio coin tokens</td><td>units</td><td>30,000</td><td class="amt">€900</td><td>Cardboard token coins, €0.03/unit</td></tr>
+                    <tr><td>Festival maps (B&W leaflet)</td><td>units</td><td>7,000</td><td class="amt">€700</td><td>€0.10/unit folded A3</td></tr>
+                    <tr><td>Posters, banners, and signs</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Street banners, event signage</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 🎆 Grand Finale -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🎆 Grand Finale *</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€5,500</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Fireworks show (Day 3 finale)</td><td>flat</td><td>1</td><td class="amt">€5,500</td><td>12–15 min professional show, lakeside. Part-funded by the municipality.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 📋 Permits, Insurance & Admin -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">📋 Permits, Insurance & Admin</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€2,400</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Municipal permits & SIAE music licences</td><td>flat</td><td>1</td><td class="amt">€1,500</td><td>Street closure, public event, music licence</td></tr>
+                    <tr><td>Public liability insurance</td><td>flat</td><td>1</td><td class="amt">€900</td><td>3-day event cover, up to 10,000 people</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 📣 Advertising & Promotion -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">📣 Advertising & Promotion</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€6,700</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark">
+                    <thead><tr><th>Item</th><th>Unit</th><th>Qty</th><th>Est. Cost</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Social media ads (Meta / Instagram / TikTok)</td><td>flat</td><td>1</td><td class="amt">€800</td><td>Geo-targeted, Como & Milan area</td></tr>
+                    <tr><td>Local press & radio spots (La Provincia, RadioComo)</td><td>flat</td><td>1</td><td class="amt">€600</td><td>Annunci stampa + spot radio</td></tr>
+                    <tr><td>Graphic design (visual identity, flyers, digital assets)</td><td>flat</td><td>1</td><td class="amt">€700</td><td>Freelance designer</td></tr>
+                    <tr><td>Influencer / local content creator partnership</td><td>flat</td><td>2–3</td><td class="amt">€400</td><td>Micro-influencer storia + lago + medioevo niche</td></tr>
+                    <tr><td>Contingency fund (10%)</td><td>flat</td><td>1</td><td class="amt">€4,200</td><td>Bad weather, last-minute changes, emergencies</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="acc-total-bar">
+            <span class="acc-total-bar-label">Total Estimated Costs</span>
+            <span class="acc-total-bar-val">€49,650</span>
         </div>
 
         <hr class="sep">
         <div class="ch"><span class="ch-label">Income Sources</span><div class="ch-title">Revenue Register</div></div>
-        <div class="budget-wrap">
-            <table class="bgt">
-                <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
-                <tbody>
-                <tr><td>Entry tickets (Days 1–3)</td><td>~4,500 paying visitors × €5 avg.</td><td class="amt">€22,500</td><td>~60% of visitors pay. Under-12 and residents are free. Conservative estimate.</td></tr>
-                <tr><td>Commercial stall fees</td><td>40 stalls × €200 avg. × 2 days</td><td class="amt">€8,000</td><td>Day 2 & 3 main market. Fewer stalls on Day 1.</td></tr>
-                <tr><td>Sesterzio exchange margin</td><td>5% float on unredeemed coins</td><td class="amt">€500</td><td>Conservative. Assumes ~€10,000 in sesterzio circulation.</td></tr>
-                <tr><td>Illustrated map / souvenir sales</td><td>500 units × €2</td><td class="amt">€1,000</td><td>Illustrated poster map sold at information stalls.</td></tr>
-                <tr><td>Sports tournament fees</td><td>20 football teams × €20</td><td class="amt">€400</td><td>5-a-side tournament, Day 2.</td></tr>
-                <tr><td>Municipal co-funding (Comune di Como)</td><td>Confirmed partner contribution</td><td class="amt">€8,000</td><td>In exchange for branding. Partly covers fireworks and permits.</td></tr>
-                <tr><td>Private sponsorships</td><td>3–5 local / regional sponsors</td><td class="amt">€8,000</td><td>Fashion brands, local banks, food companies. Logo on passport and map, stage banner.</td></tr>
-                <tr><td>Media & streaming rights</td><td>Local TV / online broadcast deal</td><td class="amt">€1,500</td><td>Optional. Negotiated with local TV channels or a streaming partner.</td></tr>
-                <tr><td>Food & drink commission</td><td>8% of food stall sesterzio revenue</td><td class="amt">€2,000</td><td>Commission on all organiser-area food stalls.</td></tr>
-                <tr class="total-row"><td colspan="2"><strong>TOTAL ESTIMATED REVENUE</strong></td><td class="amt"><strong>≈ €51,900</strong></td><td></td></tr>
-                </tbody>
-            </table>
+
+        <!-- Revenue accordions -->
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🎫 Entry Tickets</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€22,500</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark rev">
+                    <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Entry tickets (Days 1–3)</td><td>~4,500 paying visitors × €5 avg.</td><td class="amt">€22,500</td><td>~60% of visitors pay. Under-12 and residents are free. Conservative estimate.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🏪 Commercial Stalls & Market</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€8,000</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark rev">
+                    <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Commercial stall fees</td><td>40 stalls × €200 avg. × 2 days</td><td class="amt">€8,000</td><td>Day 2 & 3 main market. Fewer stalls on Day 1.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🏛️ Municipal & Sponsorships</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€16,000</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark rev">
+                    <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Municipal co-funding (Comune di Como)</td><td>Confirmed partner contribution</td><td class="amt">€8,000</td><td>In exchange for branding. Partly covers fireworks and permits.</td></tr>
+                    <tr><td>Private sponsorships</td><td>3–5 local / regional sponsors</td><td class="amt">€8,000</td><td>Fashion brands, local banks, food companies. Logo on passport and map, stage banner.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="acc-section">
+            <div class="acc-header" onclick="toggleAcc(this)">
+                <div class="acc-left"><div class="acc-dot"></div><span class="acc-cat">🪙 Merchandise, Food & Other</span></div>
+                <div class="acc-right">
+                    <span class="acc-total">€5,400</span>
+                    <svg class="acc-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4,6 8,10 12,6"/></svg>
+                </div>
+            </div>
+            <div class="acc-body">
+                <table class="bgt-dark rev">
+                    <thead><tr><th>Source</th><th>Basis</th><th>Estimate</th><th>Notes</th></tr></thead>
+                    <tbody>
+                    <tr><td>Sesterzio exchange margin</td><td>5% float on unredeemed coins</td><td class="amt">€500</td><td>Conservative. Assumes ~€10,000 in sesterzio circulation.</td></tr>
+                    <tr><td>Illustrated map / souvenir sales</td><td>500 units × €2</td><td class="amt">€1,000</td><td>Illustrated poster map sold at information stalls.</td></tr>
+                    <tr><td>Sports tournament fees</td><td>20 football teams × €20</td><td class="amt">€400</td><td>5-a-side tournament, Day 2.</td></tr>
+                    <tr><td>Media & streaming rights</td><td>Local TV / online broadcast deal</td><td class="amt">€1,500</td><td>Optional. Negotiated with local TV channels or a streaming partner.</td></tr>
+                    <tr><td>Food & drink commission</td><td>8% of food stall sesterzio revenue</td><td class="amt">€2,000</td><td>Commission on all organiser-area food stalls.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="acc-total-bar">
+            <span class="acc-total-bar-label">Total Estimated Revenue</span>
+            <span class="acc-total-bar-val">€51,900</span>
         </div>
 
         <hr class="sep">
 
         <!-- surplus — white card -->
         <div class="surplus-box">
-            <p style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--r-panel);margin-bottom:0.5rem;">Projected Balance</p>
+            <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--r-mid);margin-bottom:0.5rem;">Projected Balance</p>
             <div class="surplus-num">+ €2,250 surplus</div>
             <p style="font-size:0.9rem;color:#3a1010;margin-top:0.9rem;line-height:1.85;max-width:600px;margin-left:auto;margin-right:auto;text-align:justify;">Based on the careful scenario: 60% paying visitor rate, 40 stalls, 4 sponsors. Includes €2,500 advertising budget and a 10% contingency fund. The surplus can fund a second edition of the festival or be donated to a local heritage conservation fund.</p>
         </div>
@@ -1303,6 +1577,14 @@
             document.querySelectorAll('nav ul li a')[m[id]]?.classList.add('active');
         }
         window.scrollTo({ top:0, behavior:'smooth' });
+    }
+    function toggleAcc(header) {
+        const body = header.nextElementSibling;
+        const chev = header.querySelector('.acc-chevron');
+        const isOpen = body.classList.contains('open');
+        body.classList.toggle('open', !isOpen);
+        chev.classList.toggle('open', !isOpen);
+        header.classList.toggle('open', !isOpen);
     }
     window.addEventListener('scroll', () => {
         document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 300);
